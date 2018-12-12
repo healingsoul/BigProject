@@ -1,5 +1,5 @@
 
-package bigproject;
+package bigproject.Lib;
 
 /**
  *
