@@ -5,12 +5,18 @@ package bigproject;
  *
  * @author Haliza
  */
-public class ApotekForm extends javax.swing.JFrame {
+import bigproject.Lib.*;
+import javax.swing.table.DefaultTableModel;
 
+public class ApotekForm extends javax.swing.JFrame {
+    private DefaultTableModel tblModelAptk;
     /**
      * Creates new form NewJFrame
      */
     public ApotekForm() {
+        TabelModelApotek tbModelApotek = new TabelModelApotek();
+        this.tblModelAptk = new DefaultTableModel(tblModelAptk.getColumnCount(), 0);
+        
         initComponents();
     }
 
@@ -43,24 +49,12 @@ public class ApotekForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("KLINIK \"SIDO WARAS\"");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(this.tblModelAptk);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Nama Pasien :");
 
         jLabel2.setText("Rincian : ");
-
-        jTextField2.setText("jTextField2");
 
         jButton1.setText("RESET");
 
