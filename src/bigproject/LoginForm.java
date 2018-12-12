@@ -14,6 +14,7 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
+    private String name;
     public LoginForm() {
         initComponents();
     }
