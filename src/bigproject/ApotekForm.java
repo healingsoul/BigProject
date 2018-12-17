@@ -14,8 +14,8 @@ public class ApotekForm extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public ApotekForm() {
-        TabelModelApotek tbModelApotek = new TabelModelApotek();
-        this.tblModelAptk = new DefaultTableModel(tblModelAptk.getColumnCount(), 0);
+        TabelModelApotek tblModelAptk = new TabelModelApotek();//using tabel model
+        this.tblModelAptk = new DefaultTableModel(tblModelAptk.getColumnName(), 0);
         
         initComponents();
     }
