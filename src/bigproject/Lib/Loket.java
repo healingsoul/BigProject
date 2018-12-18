@@ -11,6 +11,7 @@ public class Loket {
     private String namaPasien;
     private String TanggalRawat;
     private ArrayList <Dokter> dokter = new ArrayList<>();
+    
 
     public Loket(int noAntrian, String namaPasien, String TanggalRawat) {
         this.noAntrian = noAntrian;
@@ -51,7 +52,7 @@ public class Loket {
         for(Dokter doctor : this.dokter){
             info +="\t" +doctor.getDetailPerlakuan()+" "+ doctor.getBiaya()+":"+"\n";
         }
-       // info += "\t"+"Total Biaya:" +this.Total;
+       info += "\t"+"Total Biaya:" + apotek.getTotal();
         return info;
         
         

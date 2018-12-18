@@ -19,6 +19,8 @@ public class Apotek {
     }
     
     public int getTotal(){
-        return this.harga * this.jumlah;
+        int total = 0;
+        total=this.harga * this.jumlah;
+        return total;
     }
 }
