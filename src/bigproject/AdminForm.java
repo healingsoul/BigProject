@@ -22,6 +22,10 @@ public class AdminForm extends javax.swing.JFrame {
         
         initComponents();
     }
+    
+    private boolean isEmpty(){//untuk mengecek apakah tabel kosong
+        return this.tabelDokter.getModel().getRowCount()<=0;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +63,11 @@ public class AdminForm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabelDokter);
 
         buttonRemove.setText("REMOVE");
+        buttonRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemoveActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nama Dokter");
 
@@ -139,6 +148,18 @@ public class AdminForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveActionPerformed
+        if(tabelDokter.getSelectedRow()<0){
+            String str = "Pilih item yang ingin dihapus terlebih dahulu!";//warning untuk barang yang ingin dihapus jika tidak dipilih
+            JOptionPane.showMessageDialog(this, str, "Information", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            int count = tabelDokter.getSelectedRows().length;//hapus barang sesuai yang dipilih
+            for(int i = 0; i < count; i++){
+                tblModelAdDktr.removeRow(tabelDokter.getSelectedRow());
+            }
+        }
+    }//GEN-LAST:event_buttonRemoveActionPerformed
 
     /**
      * @param args the command line arguments
