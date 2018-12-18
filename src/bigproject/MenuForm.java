@@ -26,12 +26,12 @@ public class MenuForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonDokter = new javax.swing.JButton();
+        buttonDataDokter = new javax.swing.JButton();
+        buttonLaporanTindakan = new javax.swing.JButton();
+        buttonApotek = new javax.swing.JButton();
+        buttonLoket = new javax.swing.JButton();
+        buttonAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,30 +43,45 @@ public class MenuForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("MENU");
 
-        jButton2.setText("Dokter");
-
-        jButton6.setText("Data Dokter");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        buttonDokter.setText("Dokter");
+        buttonDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                buttonDokterActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Laporan Tindakan");
-
-        jButton3.setText("Apotek");
-
-        jButton1.setText("Loket");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonDataDokter.setText("Data Dokter");
+        buttonDataDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonDataDokterActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Admin");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonLaporanTindakan.setText("Laporan Tindakan");
+        buttonLaporanTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonLaporanTindakanActionPerformed(evt);
+            }
+        });
+
+        buttonApotek.setText("Apotek");
+        buttonApotek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonApotekActionPerformed(evt);
+            }
+        });
+
+        buttonLoket.setText("Loket");
+        buttonLoket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoketActionPerformed(evt);
+            }
+        });
+
+        buttonAdmin.setText("Admin");
+        buttonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdminActionPerformed(evt);
             }
         });
 
@@ -94,20 +109,20 @@ public class MenuForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonApotek, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(26, 26, 26)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonLaporanTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 12, Short.MAX_VALUE)))
                                 .addGap(92, 92, 92))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonLoket, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonDataDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(104, 104, 104))))))
         );
         layout.setVerticalGroup(
@@ -121,33 +136,57 @@ public class MenuForm extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonLoket, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonDataDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonApotek, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLaporanTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void buttonDataDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDataDokterActionPerformed
+        PemilikLoginForm n = new PemilikLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonDataDokterActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buttonLoketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoketActionPerformed
+        LoketLoginForm n = new LoketLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonLoketActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
+        AdminLoginForm n = new AdminLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonAdminActionPerformed
+
+    private void buttonDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDokterActionPerformed
+        DokterLoginForm n = new DokterLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonDokterActionPerformed
+
+    private void buttonApotekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonApotekActionPerformed
+        ApotekLoginForm n = new ApotekLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonApotekActionPerformed
+
+    private void buttonLaporanTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLaporanTindakanActionPerformed
+        PemilikLoginForm n = new PemilikLoginForm();
+        n.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonLaporanTindakanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,12 +227,12 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton buttonAdmin;
+    private javax.swing.JButton buttonApotek;
+    private javax.swing.JButton buttonDataDokter;
+    private javax.swing.JButton buttonDokter;
+    private javax.swing.JButton buttonLaporanTindakan;
+    private javax.swing.JButton buttonLoket;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
