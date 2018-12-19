@@ -44,20 +44,19 @@ public class Loket {
     }
     
     
-    public String Print () {
-        String info = "";
-        info += "Detail Pemeriksaan \n";
-        info += "No Antri\t\t:" + this.noAntrian + "\n";
-        info += "Nama Pasien : " +this.getNamaPasien();
-        for(Dokter doctor : this.dokter){
-            info +="\t" +doctor.getDetailPerlakuan()+" "+ doctor.getBiaya()+":"+"\n";
-        }
-       info += "\t"+"Total Biaya:" + apotek.getTotal();
-        return info;
+//    public String Print () {
+//        String info = "";
+//        info += "Detail Pemeriksaan \n";
+//        info += "No Antri\t\t:" + this.noAntrian + "\n";
+//        info += "Nama Pasien : " +this.getNamaPasien();
+//        for(Dokter doctor : this.dokter){
+//            info +="\t" +doctor.getDetailPerlakuan()+" "+ doctor.getBiaya()+":"+"\n";
+//        }
+//       info += "\t"+"Total Biaya:" + apotek.getTotal();
+//        return info;
         
         
         
         
         
     }
-}
