@@ -9,6 +9,11 @@ public class Admin {
     private String nama;
     private String Spesialis;
 
+    public Admin() {
+    }
+
+    
+    
     public Admin(int idDokter, String nama, String Spesialis) {
         this.idDokter = idDokter;
         this.nama = nama;
