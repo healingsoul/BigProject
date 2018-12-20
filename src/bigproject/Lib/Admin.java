@@ -10,9 +10,10 @@ public class Admin {
     private int idDokter;
     private String nama;
     private String Spesialis;
-    private ArrayList<Dokter> dokter;
 
-    public Admin() {
+    public Admin(String nama, String spesialis) {
+        this.nama = nama;
+        this.Spesialis = spesialis;
     }
 
     
@@ -44,9 +45,5 @@ public class Admin {
 
     public void setSpesialis(String Spesialis) {
         this.Spesialis = Spesialis;
-    }
-    
-    public void TambahBarang (Dokter dokters){
-        this.dokter.add(dokters);
     }
 }

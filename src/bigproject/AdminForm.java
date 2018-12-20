@@ -7,40 +7,23 @@ package bigproject;
  */
 import bigproject.Lib.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class AdminForm extends javax.swing.JFrame {
-    private DefaultTableModel tblModelAdDktr;
     /**
      * Creates new form NewJFrame
      */
-    
+    private TabelModelAdminDokter tbModel;
+    public Controller control;
     
     public AdminForm() {
-        TabelModelAdminDokter tblModelAdDktr = new TabelModelAdminDokter();
-        this.tblModelAdDktr = new DefaultTableModel(tblModelAdDktr.getCoulumnName(), 0);
+        control = new Controller();
+        this.tbModel = new TabelModelAdminDokter(control.getAllAdmin());
         
         initComponents();
     }
     
     private boolean isEmpty(){//untuk mengecek apakah tabel kosong
         return this.tabelDokter.getModel().getRowCount()<=0;
-    }
-    
-    private Object[] TambahBarang (String nama, int jumlah){
-        float harga=0;
-        Admin[] barang = this.comboModel.toArray();
-        for(int i=0; i<barang.length; i++){
-            if(nama.equalsIgnoreCase(barang[i].getNama())){
-                harga= barang[i].getSpesialis();
-            }
-        }
-        Object[] obj = {
-            nama,
-            harga,
-            jumlah
-        };
-        return obj;
     }
     
     private void CekTabel(){
@@ -73,6 +56,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         spesialis = new javax.swing.JTextField();
         buttonTambah = new javax.swing.JButton();
+        buttonRemove1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +67,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("KLINIK \"SIDO WARAS\"");
 
-        tabelDokter.setModel(this.tblModelAdDktr);
+        tabelDokter.setModel(this.tbModel);
         jScrollPane2.setViewportView(tabelDokter);
 
         buttonRemove.setText("REMOVE");
@@ -101,6 +85,13 @@ public class AdminForm extends javax.swing.JFrame {
         buttonTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonTambahActionPerformed(evt);
+            }
+        });
+
+        buttonRemove1.setText("REFRESH");
+        buttonRemove1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemove1ActionPerformed(evt);
             }
         });
 
@@ -122,8 +113,6 @@ public class AdminForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonRemove)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonTambah)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -135,7 +124,13 @@ public class AdminForm extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(spesialis, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(spesialis, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(buttonRemove)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buttonRemove1))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -150,7 +145,9 @@ public class AdminForm extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buttonRemove)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonRemove)
+                    .addComponent(buttonRemove1))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(namadokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,41 +165,38 @@ public class AdminForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveActionPerformed
-        if(tabelDokter.getSelectedRow()<0){
-            String str = "Pilih item yang ingin dihapus terlebih dahulu!";//warning untuk barang yang ingin dihapus jika tidak dipilih
-            JOptionPane.showMessageDialog(this, str, "Information", JOptionPane.INFORMATION_MESSAGE);
-        }else {
-            int count = tabelDokter.getSelectedRows().length;//hapus barang sesuai yang dipilih
-            for(int i = 0; i < count; i++){
-                tblModelAdDktr.removeRow(tabelDokter.getSelectedRow());
-            }
+        String id = this.tbModel.getValueAt(this.tabelDokter.getSelectedRow(), 0).toString();
+//        System.out.println(id);
+        if(this.control.deleteAdmin(id)) {
+            JOptionPane.showMessageDialog(this, "Berhasil dihapus", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Gagal dihapus", "INFO", JOptionPane.ERROR_MESSAGE);
         }
+        
+        loadTable();
     }//GEN-LAST:event_buttonRemoveActionPerformed
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
         String nama = this.namadokter.getText();
         String spesialis = this.spesialis.getText();
-        
-        
-            Admin.addRow(TambahBarang(nama, spesialis));
-        
-        this.CekTabel();
-        
-        
-        
-        Admin admin = new Admin();
-        admin.setNama(nama);
-        admin.setSpesialis(spesialis);
-        
-        Controller control = new Controller();
-        if(control.insertAdmin(admin)) {
+        if(control.insertAdmin(nama,spesialis)) {
             JOptionPane.showMessageDialog(this, "Berhasil ditambah", "INFO", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Gagal ditambah", "INFO", JOptionPane.ERROR_MESSAGE);
         }
         
+        loadTable();
     }//GEN-LAST:event_buttonTambahActionPerformed
 
+    private void buttonRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemove1ActionPerformed
+        loadTable();
+    }//GEN-LAST:event_buttonRemove1ActionPerformed
+
+    void loadTable() {
+        tbModel.setData(control.getAllAdmin());
+        tbModel.fireTableDataChanged();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -247,6 +241,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonRemove;
+    private javax.swing.JButton buttonRemove1;
     private javax.swing.JButton buttonTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
