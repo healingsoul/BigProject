@@ -1,5 +1,7 @@
 package bigproject.Lib;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alfaza
@@ -8,6 +10,7 @@ public class Admin {
     private int idDokter;
     private String nama;
     private String Spesialis;
+    private ArrayList<Dokter> dokter;
 
     public Admin() {
     }
@@ -43,5 +46,7 @@ public class Admin {
         this.Spesialis = Spesialis;
     }
     
-    
+    public void TambahBarang (Dokter dokters){
+        this.dokter.add(dokters);
+    }
 }
