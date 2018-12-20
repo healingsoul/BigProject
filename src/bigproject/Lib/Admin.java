@@ -13,7 +13,6 @@ public class Admin {
     }
 
     
-    
     public Admin(int idDokter, String nama, String Spesialis) {
         this.idDokter = idDokter;
         this.nama = nama;

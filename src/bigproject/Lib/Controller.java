@@ -94,7 +94,7 @@ public class Controller {
     ConnectionFactory connector = new ConnectionFactory();
     Connection connection = connector.getConnection();
     try {
-        PreparedStatement ps = connection.prepareStatement("INSERT INTO admin VALUES (NULL, ?, ?, ?)");
+        PreparedStatement ps = connection.prepareStatement("INSERT INTO admin(nama, spesialis) VALUES (?, ?)");
         ps.setString(1, admin.getNama());
         ps.setString(2, admin.getSpesialis());
         int i = ps.executeUpdate();
